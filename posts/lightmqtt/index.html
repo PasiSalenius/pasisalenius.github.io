@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.69.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>LightMQTT &middot; Fresh Bits</title>
+  <meta name="description" content="Making a custom MQTT client" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://freshbits.fi/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://freshbits.fi/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://freshbits.fi/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://freshbits.fi/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class="theme-base-0d ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://freshbits.fi/"><h1>Fresh Bits</h1></a>
+      <p class="lead">
+       0100001000111110... 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://freshbits.fi/">Home</a> </li>
+        <li><a href="/apps/"> Apps </a></li><li><a href="/posts/"> Posts </a></li><li><a href="/privacy/"> Privacy policy </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>LightMQTT</h1>
+  <time datetime=2017-06-04T17:37:01&#43;0300 class="post-date">Sun, Jun 4, 2017</time>
+  <p>As I&rsquo;m finally getting my <a href="/apps/transporter" title="Transporter">realtime transit app</a> ready for public release, it&rsquo;s a good time to go through some things I&rsquo;ve learned while open sourcing my code for the first time.</p>
+<p><a href="/apps/transporter">Transporter</a> uses <a href="http://mqtt.org">MQTT</a> to receive vehicle data updates from the <a href="https://digitransit.fi">Digitransit</a> APIs. While it&rsquo;s possible to just repeatedly pull this data, there are just too many vehicles shown on the map simultaneously.</p>
+<p>The <a href="https://digipalvelutehdas.hackpad.com/HSL-MQTT-API-draft#HSL-MQTT-API-draft">MQTT feed</a> itself publishes JSON which contains vehicle coordinates, delay compared to schedule, heading, next stop and other useful information. The message payloads are in JSON.</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="nt">&#34;VP&#34;</span><span class="p">:{</span><span class="nt">&#34;dir&#34;</span><span class="p">:</span><span class="s2">&#34;1&#34;</span><span class="p">,</span><span class="nt">&#34;spd&#34;</span><span class="p">:</span><span class="mf">7.5</span><span class="p">,</span><span class="nt">&#34;source&#34;</span><span class="p">:</span><span class="s2">&#34;sm5logger&#34;</span><span class="p">,</span><span class="nt">&#34;desi&#34;</span><span class="p">:</span><span class="s2">&#34;I&#34;</span><span class="p">,</span><span class="nt">&#34;lat&#34;</span><span class="p">:</span><span class="mf">60.20808</span><span class="p">,</span><span class="nt">&#34;hdg&#34;</span><span class="p">:</span><span class="mi">135</span><span class="p">,</span><span class="nt">&#34;tst&#34;</span><span class="p">:</span><span class="s2">&#34;2017-06-04T19:21:20.000Z&#34;</span><span class="p">,</span><span class="nt">&#34;line&#34;</span><span class="p">:</span><span class="s2">&#34;XXX&#34;</span><span class="p">,</span><span class="nt">&#34;start&#34;</span><span class="p">:</span><span class="s2">&#34;2126&#34;</span><span class="p">,</span><span class="nt">&#34;long&#34;</span><span class="p">:</span><span class="mf">24.920565</span><span class="p">,</span><span class="nt">&#34;jrn&#34;</span><span class="p">:</span><span class="s2">&#34;XXX&#34;</span><span class="p">,</span><span class="nt">&#34;tsi&#34;</span><span class="p">:</span><span class="mi">1496604080</span><span class="p">,</span><span class="nt">&#34;dl&#34;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span><span class="nt">&#34;veh&#34;</span><span class="p">:</span><span class="s2">&#34;H9171&#34;</span><span class="p">,</span><span class="nt">&#34;oper&#34;</span><span class="p">:</span><span class="s2">&#34;XXX&#34;</span><span class="p">,</span><span class="nt">&#34;oday&#34;</span><span class="p">:</span><span class="s2">&#34;2017-06-04&#34;</span><span class="p">,</span><span class="nt">&#34;stop_index&#34;</span><span class="p">:</span><span class="mi">22</span><span class="p">}}</span></code></pre></div>
+<p>In my use case publishing MQTT messages was irrelevant. Easily understandable compact Swift class was what I needed, and I simply could not find one back then<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. All available Swift libraries, like <a href="https://github.com/emqtt/CocoaMQTT">CocoaMQTT</a> and <a href="https://github.com/flightonary/Moscapsule">Moscapsule</a>, seemed to be just thin wrappers around <a href="http://mosquitto.org">Mosquitto</a>, bringing along all its dependencies.</p>
+<p>I had wanted to code a simple protocol client for quite some time, so soon after the <a href="https://developer.apple.com/swift/blog/?id=14">first Swift release</a>, I got a simple MQTT client working pretty quickly. The <a href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html">MQTT specification</a> was an important aid in getting the control packet bytes set up right. I learned about <code>UnsafeMutablePointer</code>s and how not to copy data unnecessarily.</p>
+<p>While the original LightMQTT implementation worked, it needed more work in the following areas</p>
+<ul>
+<li>Handling repeated reconnects gracefully (Transporter connects clients in many <code>viewDidAppear</code>, only to soon disconnect them in <code>viewDidDisappear</code>)</li>
+<li>Memory handling (for the above reason, clients <em>had</em> to <code>deinit</code> reliably)</li>
+<li>Correct handling of bad network conditions (transit apps are often used in subways with unreliable 3G, or much worse)</li>
+<li>Parse MQTT messages in a background thread, to keep the app UI running smoothly</li>
+</ul>
+<p>I came across a Stack Overflow <a href="https://stackoverflow.com/a/34621513">post</a> by <a href="https://twitter.com/cocoaphony">@cocoaphony</a> where he suggested reading from <code>InputStream</code> in a simple while loop, dispatched to a background thread. This was a way nicer approach than using the <code>StreamDelegate</code> callbacks for handling <code>bytesAvailable</code> events, and kept stream reading and eventual message parsing away from the main thread.</p>
+<p>The current LightMQTT version dispatches reading from a newly opened <code>InputStream</code> to a background queue.</p>
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="n">DispatchQueue</span><span class="p">.</span><span class="n">global</span><span class="p">(</span><span class="n">qos</span><span class="p">:</span> <span class="n">strongSelf</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">readQosClass</span><span class="p">).</span><span class="n">async</span> <span class="p">{</span>
+    <span class="n">strongSelf</span><span class="p">.</span><span class="n">readStream</span><span class="p">(</span><span class="n">input</span><span class="p">:</span> <span class="n">streams</span><span class="p">.</span><span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="n">streams</span><span class="p">.</span><span class="n">output</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+<p>Reading from the <code>InputStream</code> is a blocking operation, waiting for new bytes to arrive. After a 60 second timeout it either gives up and returns 0 or returns a negative value indicating an error. The while loop, and the whole background execution, only stays alive while the <code>InputStream</code> is open.</p>
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="k">while</span> <span class="n">messageParserState</span> <span class="p">==</span> <span class="p">.</span><span class="n">decodingHeader</span> <span class="o">&amp;&amp;</span> <span class="n">input</span><span class="p">.</span><span class="n">streamStatus</span> <span class="p">==</span> <span class="p">.</span><span class="n">open</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">count</span> <span class="p">=</span> <span class="n">input</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">messageBuffer</span><span class="p">,</span> <span class="n">maxLength</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">count</span> <span class="p">==</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">break</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="bp">count</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="kd">let</span> <span class="nv">message</span> <span class="p">=</span> <span class="n">PacketType</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="n">messageBuffer</span><span class="p">.</span><span class="n">pointee</span> <span class="o">&amp;</span> <span class="mh">0xf0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">messageType</span> <span class="p">=</span> <span class="n">message</span>
+        <span class="n">messageParserState</span> <span class="p">=</span> <span class="p">.</span><span class="n">decodingLength</span>
+        <span class="n">messageLengthMultiplier</span> <span class="p">=</span> <span class="mi">1</span>
+        <span class="n">messageLength</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>The code lately received contributions from <a href="https://github.com/travisgriggs/">a fellow GitHub developer</a> who nicely abstracted the details of a control packet away into their own struct. <code>UInt8</code> arrays also gave room for much nicer <code>AppendableData</code>, which allows adding into bytes in a much swiftier way.</p>
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="n">fileprivate</span> <span class="kd">struct</span> <span class="nc">ControlPacket</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">type</span><span class="p">:</span> <span class="n">PacketType</span>
+    <span class="kd">var</span> <span class="nv">flags</span><span class="p">:</span> <span class="n">PacketFlags</span>
+    <span class="kd">var</span> <span class="nv">variableHeader</span> <span class="p">=</span> <span class="n">AppendableData</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nv">payload</span> <span class="p">=</span> <span class="n">AppendableData</span><span class="p">()</span>
+
+    <span class="kd">var</span> <span class="nv">remainingLength</span><span class="p">:</span> <span class="n">Data</span> <span class="p">{</span>
+	    <span class="p">...</span>
+    <span class="p">}</span> 
+
+    <span class="kd">var</span> <span class="nv">encoded</span><span class="p">:</span> <span class="n">Data</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nv">bytes</span> <span class="p">=</span> <span class="n">Data</span><span class="p">()</span>
+        <span class="n">bytes</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">type</span><span class="p">.</span><span class="n">rawValue</span> <span class="o">|</span> <span class="n">flags</span><span class="p">.</span><span class="n">rawValue</span><span class="p">)</span>
+        <span class="n">bytes</span> <span class="o">+=</span> <span class="n">remainingLength</span>
+        <span class="n">bytes</span> <span class="o">+=</span> <span class="n">variableHeader</span><span class="p">.</span><span class="n">data</span>
+        <span class="n">bytes</span> <span class="o">+=</span> <span class="n">payload</span><span class="p">.</span><span class="n">data</span>
+        <span class="k">return</span> <span class="n">bytes</span>
+    <span class="p">}</span>
+
+    <span class="kd">init</span><span class="p">(</span><span class="n">type</span><span class="p">:</span> <span class="n">PacketType</span><span class="p">,</span> <span class="n">flags</span><span class="p">:</span> <span class="n">PacketFlags</span> <span class="p">=</span> <span class="p">.</span><span class="n">mostOnce</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">type</span> <span class="p">=</span> <span class="n">type</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">flags</span> <span class="p">=</span> <span class="n">flags</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>Control packets can now be built in a neat way like like this</p>
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">var</span> <span class="nv">packet</span> <span class="p">=</span> <span class="n">ControlPacket</span><span class="p">(</span><span class="n">type</span><span class="p">:</span> <span class="p">.</span><span class="n">connect</span><span class="p">)</span>
+<span class="n">packet</span><span class="p">.</span><span class="n">payload</span> <span class="o">+=</span> <span class="n">options</span><span class="p">.</span><span class="n">concreteClientId</span></code></pre></div>
+<p>The client also provides a small set of options, e.g. login credentials, TLS usage and a templatable client ID.</p>
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">var</span> <span class="nv">options</span> <span class="p">=</span> <span class="n">LightMQTT</span><span class="p">.</span><span class="n">Options</span><span class="p">()</span>
+<span class="n">options</span><span class="p">.</span><span class="n">useTLS</span> <span class="p">=</span> <span class="kc">true</span>
+<span class="n">options</span><span class="p">.</span><span class="n">port</span> <span class="p">=</span> <span class="mi">8883</span>
+<span class="n">options</span><span class="p">.</span><span class="n">username</span> <span class="p">=</span> <span class="s">&#34;myuser&#34;</span>
+<span class="n">options</span><span class="p">.</span><span class="n">password</span> <span class="p">=</span> <span class="s">&#34;s3cr3t&#34;</span>
+<span class="n">options</span><span class="p">.</span><span class="n">clientId</span> <span class="p">=</span> <span class="s">&#34;myapp_%%%%&#34;</span>
+<span class="n">options</span><span class="p">.</span><span class="n">pingInterval</span> <span class="p">=</span> <span class="mi">60</span>
+<span class="n">options</span><span class="p">.</span><span class="n">bufferSize</span> <span class="p">=</span> <span class="mi">4096</span>
+<span class="n">options</span><span class="p">.</span><span class="n">readQosClass</span> <span class="p">=</span> <span class="p">.</span><span class="n">background</span>
+
+<span class="kd">let</span> <span class="nv">client</span> <span class="p">=</span> <span class="n">LightMQTT</span><span class="p">(</span><span class="n">host</span><span class="p">:</span> <span class="s">&#34;10.10.10.10&#34;</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="n">options</span><span class="p">)</span></code></pre></div>
+<p>The client works very reliably in my limited test use and should serve well in the <a href="/apps/transporter">Transporter</a> app.</p>
+<img src="/images/transporter-map.png" class="lazyload" width=100%>
+<p>Check out the full LightMQTT source code at <a href="https://github.com/PasiSalenius/LightMQTT">GitHub</a>.</p>
+<p>Pasi</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>More recently also other pure Swift MQTT libraries have sprung up. So far I&rsquo;ve bumped into <a href="https://github.com/aciidb0mb3r/SwiftMQTT">SwiftMQTT</a> and <a href="https://github.com/IBM-Swift/Aphid">Aphid</a>. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

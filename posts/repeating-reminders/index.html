@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.69.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Repeating reminders &middot; Fresh Bits</title>
+  <meta name="description" content="Rethinking stop reminders" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://freshbits.fi/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://freshbits.fi/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://freshbits.fi/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://freshbits.fi/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class="theme-base-0d ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://freshbits.fi/"><h1>Fresh Bits</h1></a>
+      <p class="lead">
+       0100001000111110... 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://freshbits.fi/">Home</a> </li>
+        <li><a href="/apps/"> Apps </a></li><li><a href="/posts/"> Posts </a></li><li><a href="/privacy/"> Privacy policy </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Repeating reminders</h1>
+  <time datetime=2017-07-14T11:40:00&#43;0300 class="post-date">Fri, Jul 14, 2017</time>
+  <p>The latest version of <a href="/apps/transporter">Transporter</a> includes a big change to reminders. This is a new take on how repeating server-side reminders could help public transit travellers.</p>
+<h2 id="reminder-redesign">Reminder redesign</h2>
+<p>Previously, reminders in the app continuously monitored for specific lines and informed the user when the vehicle was approaching a stop, and got deleted after being triggered. This was useful for individual alerts, but was cumbersome for any frequent use. However, it did lay the groundwork for something nicer.</p>
+<p>The new repeating reminder takes some of its functionality from the existing route tracking feature, which monitors chosen lines for delays and disruptions. All of this is now bundled into reminders, and the user is in full control over what notifications to receive and when.</p>
+<p>For example, it is easy to create a reminder that only notifies you when a chosen departure of a bus line is more than 5 minutes late.</p>
+<img src="/images/delayed-notification.png" class="lazyload" width=100%>
+<p>Currently, the server-side monitoring queries <a href="https://digitransit.fi">Digitransit</a> for stoptimes and follows the realtime <a href="https://digitransit.fi/en/developers/services-and-apis/4-realtime-api/vehicle-positions/">MQTT feed</a> to find out when there are delays. While this data is <a href="http://dev.hsl.fi/live/">available</a> for most transit lines in the Helsinki area and in other large Finnish cities, some data is still inaccurate and will hopefully get better in the <a href="https://www.hsl.fi/uudetlaitteet/ammattilaisille">near future</a>.</p>
+<h2 id="user-interface">User interface</h2>
+<p>While transit data monitoring was a large part of building the repeating reminders feature, another challenge was coming up with a user interface for creating, editing and controlling these reminders.</p>
+<p>I wanted to offer the user a lot of technical control, but the interface still needed to be clear and intuitive. As you would expect, it took several rounds of trial and error before reaching the current implementation. It may still look like it was designed by an engineer, but hey, that&rsquo;s me.</p>
+<img src="/images/transporter-reminder.png" class="lazyload" width=100%>
+<p>Finally, using the mobile client to edit and control something that mainly lives on the server was one more part that needed special consideration. For example, repeating reminders have to contain a mechanism to automatically expire unless periodically refreshed by the client, as it is possible for the user to uninstall the app at any point, without the server knowing about it.</p>
+<p>Repeating reminders should be a nice addition to Transporter app&rsquo;s feature set. I hope you find them useful.</p>
+<p>Check out the new Transporter update <a href="https://itunes.apple.com/app/apple-store/id987254566?pt=562211&ct=freshbits-app-page&mt=8">here</a>.</p>
+<p>Pasi</p>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

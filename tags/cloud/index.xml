@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cloud on Fresh Bits</title>
+    <link>https://freshbits.fi/tags/cloud/</link>
+    <description>Recent content in cloud on Fresh Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 14 Jul 2017 11:40:00 +0300</lastBuildDate>
+    
+	<atom:link href="https://freshbits.fi/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Repeating reminders</title>
+      <link>https://freshbits.fi/posts/repeating-reminders/</link>
+      <pubDate>Fri, 14 Jul 2017 11:40:00 +0300</pubDate>
+      
+      <guid>https://freshbits.fi/posts/repeating-reminders/</guid>
+      <description>The latest version of Transporter includes a big change to reminders. This is a new take on how repeating server-side reminders could help public transit travellers.
+Reminder redesign Previously, reminders in the app continuously monitored for specific lines and informed the user when the vehicle was approaching a stop, and got deleted after being triggered. This was useful for individual alerts, but was cumbersome for any frequent use. However, it did lay the groundwork for something nicer.</description>
+    </item>
+    
+  </channel>
+</rss>

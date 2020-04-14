@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://freshbits.fi/apps/teletext/</loc>
+    <lastmod>2020-04-14T10:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/apps/transporter/</loc>
+    <lastmod>2017-02-15T01:45:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/apps/areenax/</loc>
+    <lastmod>2017-02-15T01:45:36+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/apps/</loc>
+    <lastmod>2020-04-14T10:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/privacy/</loc>
+    <lastmod>2018-10-06T16:47:07+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/categories/</loc>
+    <lastmod>2017-07-14T11:40:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/tags/cloud/</loc>
+    <lastmod>2017-07-14T11:40:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/posts/</loc>
+    <lastmod>2017-07-14T11:40:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/tags/reminders/</loc>
+    <lastmod>2017-07-14T11:40:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/posts/repeating-reminders/</loc>
+    <lastmod>2017-07-14T11:40:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/tags/</loc>
+    <lastmod>2017-07-14T11:40:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/categories/transporter/</loc>
+    <lastmod>2017-07-14T11:40:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/tags/chat/</loc>
+    <lastmod>2017-07-05T13:47:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/tags/cloudflare/</loc>
+    <lastmod>2017-07-05T13:47:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/tags/drift/</loc>
+    <lastmod>2017-07-05T13:47:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/posts/drift/</loc>
+    <lastmod>2017-07-05T13:47:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/categories/website/</loc>
+    <lastmod>2017-07-05T13:47:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/tags/github/</loc>
+    <lastmod>2017-06-04T17:37:01+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/posts/lightmqtt/</loc>
+    <lastmod>2017-06-04T17:37:01+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/tags/mqtt/</loc>
+    <lastmod>2017-06-04T17:37:01+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/tags/open-source/</loc>
+    <lastmod>2017-06-04T17:37:01+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/categories/swift/</loc>
+    <lastmod>2017-06-04T17:37:01+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/</loc>
+    <lastmod>2017-02-15T19:07:10+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://freshbits.fi/posts/hello-world/</loc>
+    <lastmod>2017-02-15T00:36:18+02:00</lastmod>
+  </url>
+  
+</urlset>

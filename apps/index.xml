@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apps on Fresh Bits</title>
+    <link>https://freshbits.fi/apps/</link>
+    <description>Recent content in Apps on Fresh Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 14 Apr 2020 10:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://freshbits.fi/apps/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Teletext Watch</title>
+      <link>https://freshbits.fi/apps/teletext/</link>
+      <pubDate>Tue, 14 Apr 2020 10:00:00 +0200</pubDate>
+      
+      <guid>https://freshbits.fi/apps/teletext/</guid>
+      <description>&lt;h2 id=&#34;teletext-watch&#34;&gt;Teletext Watch&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://itunes.apple.com/us/app/areenax/id1018799028?mt=12&#34;&gt;App Store link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Read teletext right on your Apple Watch.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Transporter</title>
+      <link>https://freshbits.fi/apps/transporter/</link>
+      <pubDate>Wed, 15 Feb 2017 01:45:24 +0200</pubDate>
+      
+      <guid>https://freshbits.fi/apps/transporter/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://itunes.apple.com/app/apple-store/id987254566?pt=562211&amp;ct=freshbits-app-page&amp;mt=8&#34;&gt;App Store link&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;realtime-journey-planning&#34;&gt;Realtime journey planning&lt;/h3&gt;
+&lt;p&gt;Transporter is a realtime journey planner and timetable pocket guide for iOS.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s based on the new &lt;a href=&#34;https://digitransit.fi&#34;&gt;Digitransit.fi&lt;/a&gt; platform, the same one that the new Helsinki region journey planner &lt;a href=&#34;https://reittiopas.fi&#34;&gt;Reittiopas.fi&lt;/a&gt; uses as backend API.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AreenaX</title>
+      <link>https://freshbits.fi/apps/areenax/</link>
+      <pubDate>Wed, 15 Feb 2017 01:45:36 +0200</pubDate>
+      
+      <guid>https://freshbits.fi/apps/areenax/</guid>
+      <description>&lt;h2 id=&#34;areenax-for-mac&#34;&gt;AreenaX for Mac&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://itunes.apple.com/us/app/areenax/id1018799028?mt=12&#34;&gt;Mac App Store link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;AreenaX is a little Yle Areena player for the Mac. It’s made possible by the &lt;a href=&#34;http://developer.yle.fi&#34;&gt;Yle API&lt;/a&gt;, that is freely available to all developers.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

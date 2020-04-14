@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>open source on Fresh Bits</title>
+    <link>https://freshbits.fi/tags/open-source/</link>
+    <description>Recent content in open source on Fresh Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 04 Jun 2017 17:37:01 +0300</lastBuildDate>
+    
+	<atom:link href="https://freshbits.fi/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>LightMQTT</title>
+      <link>https://freshbits.fi/posts/lightmqtt/</link>
+      <pubDate>Sun, 04 Jun 2017 17:37:01 +0300</pubDate>
+      
+      <guid>https://freshbits.fi/posts/lightmqtt/</guid>
+      <description>As I&amp;rsquo;m finally getting my realtime transit app ready for public release, it&amp;rsquo;s a good time to go through some things I&amp;rsquo;ve learned while open sourcing my code for the first time.
+Transporter uses MQTT to receive vehicle data updates from the Digitransit APIs. While it&amp;rsquo;s possible to just repeatedly pull this data, there are just too many vehicles shown on the map simultaneously.
+The MQTT feed itself publishes JSON which contains vehicle coordinates, delay compared to schedule, heading, next stop and other useful information.</description>
+    </item>
+    
+  </channel>
+</rss>

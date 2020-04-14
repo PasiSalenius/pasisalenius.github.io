@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.69.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Transporter &middot; Fresh Bits</title>
+  <meta name="description" content="Realtime transit guide for iOS" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://freshbits.fi/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://freshbits.fi/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://freshbits.fi/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://freshbits.fi/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class="theme-base-0d ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://freshbits.fi/"><h1>Fresh Bits</h1></a>
+      <p class="lead">
+       0100001000111110... 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://freshbits.fi/">Home</a> </li>
+        <li><a href="/apps/"> Apps </a></li><li><a href="/posts/"> Posts </a></li><li><a href="/privacy/"> Privacy policy </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>
+	  <img src="/images/transporter-icon.png" style="height:80px">
+	  Transporter
+  </h1>
+  <p><a href="https://itunes.apple.com/app/apple-store/id987254566?pt=562211&ct=freshbits-app-page&mt=8">App Store link</a></p>
+<h3 id="realtime-journey-planning">Realtime journey planning</h3>
+<p>Transporter is a realtime journey planner and timetable pocket guide for iOS.</p>
+<p>It&rsquo;s based on the new <a href="https://digitransit.fi">Digitransit.fi</a> platform, the same one that the new Helsinki region journey planner <a href="https://reittiopas.fi">Reittiopas.fi</a> uses as backend API.</p>
+<img src="/images/transporter-isometric.png" class="lazyload" width=100%>
+<p>A true realtime journey planner cannot rely on just static timetable information. Instead, Transporter keeps the displayed routes and timetables up to date with realtime data from the Digitransit API. For example, departure times reflect recent traffic changes in a matter of seconds.</p>
+<p>Route results adjust their departure and final arrival time as needed, and a notification alerts the user of not making it in time to catch the next line.</p>
+<img src="/images/transporter-line-2.png" class="lazyload" width=100%>
+<p>Most transit apps trigger stop reminders either using the GPS position of the iOS device or the scheduled arrival time. In Transporter, reminders get triggered when the vehicle actually nears its target, so at the correct time even for delayed lines. As the server is doing all the work instead of the mobile app, these reminders can be set for arbitrary transit lines.</p>
+<p>Intelligent reminders can be set to automatically repeat on chosen weekdays, e.g. only between Monday and Friday. The server continues monitoring traffic for the selected line, and sends push notifications for abnormal delays, disruptions and stop arrivals, depending on reminder settings.</p>
+<img src="/images/transporter-line.png" class="lazyload" width=100%>
+<h3 id="live-map">Live Map</h3>
+<p>Powering most of the map views in Transporter, the Live Map subscribes to a realtime transit data feed using the <a href="http://mqtt.org">MQTT</a> messaging protocol.</p>
+<p>The map visualizes vehicle movements and traffic conditions using subtle animations. On recent hardware, the map can handle hundreds of location updates per second.</p>
+<img src="/images/transporter-map.png" class="lazyload" width=100%>
+<p><a href="https://github.com/PasiSalenius/LightMQTT">LightMQTT</a>, the custom MQTT client built for Live Map, is available as an open source library. To keep things running smooth all message reading is dispatched to a background queue. This library is very compact and easy to tune to your specific purpose, so take a look!</p>
+<p>The LightMQTT library, as well as the rest of Transporter client, are written entirely in <a href="https://swift.org">Swift 3</a>.</p>
+<h3 id="transporter-server">Transporter Server</h3>
+<p>Transporter Server allows the mobile app to suspend while in background and still stay up to date with realtime transit data. Once awake, the client syncs all reminder and alert settings with the server.</p>
+<p>The server keeps a persistent connection to the MQTT realtime feed and can periodically query the Digitransit API for information about line arrivals, delays and disruptions. Stop reminders and other alerts get sent to the mobile clients over APNS as push notifications.</p>
+<p>Transporter Server is implemented in <a href="https://golang.org">Go</a> language and is currently deployed in <a href="https://www.heroku.com">Heroku</a> in the EU region.</p>
+<h3 id="user-privacy">User privacy</h3>
+<p>User privacy is essential, so Transporter only measures basic app usage with <a href="https://developer.apple.com/app-store/app-analytics/">App Analytics</a> which is built into the iOS platform.</p>
+<p>No closed source third party libraries (e.g. crash or usage analytics) have been bundled in, to make sure the app only does what it is supposed to do, and nothing else.</p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About me on Fresh Bits</title>
+    <link>https://freshbits.fi/</link>
+    <description>Recent content in About me on Fresh Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 15 Feb 2017 19:07:10 +0200</lastBuildDate>
+    
+	<atom:link href="https://freshbits.fi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Teletext Watch</title>
+      <link>https://freshbits.fi/apps/teletext/</link>
+      <pubDate>Tue, 14 Apr 2020 10:00:00 +0200</pubDate>
+      
+      <guid>https://freshbits.fi/apps/teletext/</guid>
+      <description>&lt;h2 id=&#34;teletext-watch&#34;&gt;Teletext Watch&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://itunes.apple.com/us/app/areenax/id1018799028?mt=12&#34;&gt;App Store link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Read teletext right on your Apple Watch.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Transporter</title>
+      <link>https://freshbits.fi/apps/transporter/</link>
+      <pubDate>Wed, 15 Feb 2017 01:45:24 +0200</pubDate>
+      
+      <guid>https://freshbits.fi/apps/transporter/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://itunes.apple.com/app/apple-store/id987254566?pt=562211&amp;ct=freshbits-app-page&amp;mt=8&#34;&gt;App Store link&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;realtime-journey-planning&#34;&gt;Realtime journey planning&lt;/h3&gt;
+&lt;p&gt;Transporter is a realtime journey planner and timetable pocket guide for iOS.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s based on the new &lt;a href=&#34;https://digitransit.fi&#34;&gt;Digitransit.fi&lt;/a&gt; platform, the same one that the new Helsinki region journey planner &lt;a href=&#34;https://reittiopas.fi&#34;&gt;Reittiopas.fi&lt;/a&gt; uses as backend API.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AreenaX</title>
+      <link>https://freshbits.fi/apps/areenax/</link>
+      <pubDate>Wed, 15 Feb 2017 01:45:36 +0200</pubDate>
+      
+      <guid>https://freshbits.fi/apps/areenax/</guid>
+      <description>&lt;h2 id=&#34;areenax-for-mac&#34;&gt;AreenaX for Mac&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://itunes.apple.com/us/app/areenax/id1018799028?mt=12&#34;&gt;Mac App Store link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;AreenaX is a little Yle Areena player for the Mac. It’s made possible by the &lt;a href=&#34;http://developer.yle.fi&#34;&gt;Yle API&lt;/a&gt;, that is freely available to all developers.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Privacy policy</title>
+      <link>https://freshbits.fi/privacy/</link>
+      <pubDate>Sat, 06 Oct 2018 16:47:07 +0300</pubDate>
+      
+      <guid>https://freshbits.fi/privacy/</guid>
+      <description>Transporter This policy applies to the Transporter journey planner app for iPhone.
+Information we collect When starting the app for the first time on a new device, you are asked if you want your favorite lines and stops to be sent to our servers. Line and stop identifiers are matched to current traffic information such as disruption alerts, delays on lines and news bulletins, and you are sent notifications for these events.</description>
+    </item>
+    
+    <item>
+      <title>Repeating reminders</title>
+      <link>https://freshbits.fi/posts/repeating-reminders/</link>
+      <pubDate>Fri, 14 Jul 2017 11:40:00 +0300</pubDate>
+      
+      <guid>https://freshbits.fi/posts/repeating-reminders/</guid>
+      <description>The latest version of Transporter includes a big change to reminders. This is a new take on how repeating server-side reminders could help public transit travellers.
+Reminder redesign Previously, reminders in the app continuously monitored for specific lines and informed the user when the vehicle was approaching a stop, and got deleted after being triggered. This was useful for individual alerts, but was cumbersome for any frequent use. However, it did lay the groundwork for something nicer.</description>
+    </item>
+    
+    <item>
+      <title>Drift app on Cloudflare</title>
+      <link>https://freshbits.fi/posts/drift/</link>
+      <pubDate>Wed, 05 Jul 2017 13:47:00 +0300</pubDate>
+      
+      <guid>https://freshbits.fi/posts/drift/</guid>
+      <description>I&amp;rsquo;ve been very much enjoying running this site through Cloudflare right from the start. It gives me free HTTPS with all bells and whistles enabled (TLS 1.3 with 0-RTT, anyone?), and makes the already lightweight website load even faster. Being able to keep a tally of daily visitors doesn&amp;rsquo;t hurt either.
+And just over a week ago, Cloudflare announced their app platform! I took a look and immediately saw a number of free totally useful apps, that fit my purposes nicely.</description>
+    </item>
+    
+    <item>
+      <title>LightMQTT</title>
+      <link>https://freshbits.fi/posts/lightmqtt/</link>
+      <pubDate>Sun, 04 Jun 2017 17:37:01 +0300</pubDate>
+      
+      <guid>https://freshbits.fi/posts/lightmqtt/</guid>
+      <description>As I&amp;rsquo;m finally getting my realtime transit app ready for public release, it&amp;rsquo;s a good time to go through some things I&amp;rsquo;ve learned while open sourcing my code for the first time.
+Transporter uses MQTT to receive vehicle data updates from the Digitransit APIs. While it&amp;rsquo;s possible to just repeatedly pull this data, there are just too many vehicles shown on the map simultaneously.
+The MQTT feed itself publishes JSON which contains vehicle coordinates, delay compared to schedule, heading, next stop and other useful information.</description>
+    </item>
+    
+    <item>
+      <title>Hello world</title>
+      <link>https://freshbits.fi/posts/hello-world/</link>
+      <pubDate>Wed, 15 Feb 2017 00:36:18 +0200</pubDate>
+      
+      <guid>https://freshbits.fi/posts/hello-world/</guid>
+      <description>This is the start of a new website. More to come.
+Pasi</description>
+    </item>
+    
+  </channel>
+</rss>

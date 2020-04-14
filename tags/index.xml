@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Fresh Bits</title>
+    <link>https://freshbits.fi/tags/</link>
+    <description>Recent content in Tags on Fresh Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 14 Jul 2017 11:40:00 +0300</lastBuildDate>
+    
+	<atom:link href="https://freshbits.fi/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>cloud</title>
+      <link>https://freshbits.fi/tags/cloud/</link>
+      <pubDate>Fri, 14 Jul 2017 11:40:00 +0300</pubDate>
+      
+      <guid>https://freshbits.fi/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reminders</title>
+      <link>https://freshbits.fi/tags/reminders/</link>
+      <pubDate>Fri, 14 Jul 2017 11:40:00 +0300</pubDate>
+      
+      <guid>https://freshbits.fi/tags/reminders/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chat</title>
+      <link>https://freshbits.fi/tags/chat/</link>
+      <pubDate>Wed, 05 Jul 2017 13:47:00 +0300</pubDate>
+      
+      <guid>https://freshbits.fi/tags/chat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cloudflare</title>
+      <link>https://freshbits.fi/tags/cloudflare/</link>
+      <pubDate>Wed, 05 Jul 2017 13:47:00 +0300</pubDate>
+      
+      <guid>https://freshbits.fi/tags/cloudflare/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>drift</title>
+      <link>https://freshbits.fi/tags/drift/</link>
+      <pubDate>Wed, 05 Jul 2017 13:47:00 +0300</pubDate>
+      
+      <guid>https://freshbits.fi/tags/drift/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github</title>
+      <link>https://freshbits.fi/tags/github/</link>
+      <pubDate>Sun, 04 Jun 2017 17:37:01 +0300</pubDate>
+      
+      <guid>https://freshbits.fi/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mqtt</title>
+      <link>https://freshbits.fi/tags/mqtt/</link>
+      <pubDate>Sun, 04 Jun 2017 17:37:01 +0300</pubDate>
+      
+      <guid>https://freshbits.fi/tags/mqtt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>open source</title>
+      <link>https://freshbits.fi/tags/open-source/</link>
+      <pubDate>Sun, 04 Jun 2017 17:37:01 +0300</pubDate>
+      
+      <guid>https://freshbits.fi/tags/open-source/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
