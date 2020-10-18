@@ -6,11 +6,7 @@
     <description>Recent content in github on Fresh Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 04 Jun 2017 17:37:01 +0300</lastBuildDate>
-    
-	<atom:link href="https://freshbits.fi/tags/github/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 04 Jun 2017 17:37:01 +0300</lastBuildDate><atom:link href="https://freshbits.fi/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LightMQTT</title>
       <link>https://freshbits.fi/posts/lightmqtt/</link>
